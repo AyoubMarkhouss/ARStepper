@@ -17,9 +17,9 @@ const Merci = () => {
         top: done !== null ? "14%" : "100%",
         opacity: done !== null ? 1 : 0,
       }}
-      className="z-50 w-full pb-20 md:py-28 bg-[#F4F4F4] "
+      className="z-50 w-full pb-28 md:py-28 bg-[#F4F4F4] "
     >
-      <div className="flex justify-center items-center">
+      <div className="flex justify-center items-center pl-5 md:pl-0">
         <h1 className="semi text-xl md:text-2xl">
           Merci {prénom} {nom} de l&apos;intérêt que vous portez à notre marque.
         </h1>
