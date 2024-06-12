@@ -4,7 +4,7 @@ import { useCarStore } from "../../store/brochure/car";
 const Models = () => {
   const { car, updateCar } = useCarStore();
   return (
-    <div className="mx-10 md:mx-20 py-20">
+    <div className="mx-10 md:mx-20 py-20 h-[70vh] md:h-full">
       <h2 className="text-lg font-semibold pb-10">Sélectionnez un modèle</h2>
       <div className="grid grid-cols-1 lg:grid-cols-4  md:gap-x-14">
         {cars.map((item) => {

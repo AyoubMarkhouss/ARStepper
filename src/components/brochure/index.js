@@ -19,7 +19,7 @@ const Index = () => {
             ? map !== ""
               ? "md:h-[120vh] md:overflow-y-clip"
               : "overflow-y-clip overflow-hidden md:h-screen md:max-h-screen "
-            : "md:overflow-y-clip"
+            : "h-screen md:overflow-y-clip"
         )}
       >
         <Stepso />
