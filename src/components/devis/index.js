@@ -20,7 +20,7 @@ const Index = () => {
           "relative",
           done || car === ""
             ? map !== ""
-              ? "md:h-[150vh] md:overflow-y-clip"
+              ? "md:h-[120vh] md:overflow-y-clip"
               : "overflow-y-clip overflow-hidden md:h-screen md:max-h-screen "
             : "md:h-[150vh] md:overflow-y-clip"
         )}
@@ -73,7 +73,7 @@ const Steps = () => {
     //   </div>
     //   <div className="h-[2px] w-full top-1/2 z-10 -translate-y-1/2 absolute bg-zinc-950" />
     // </div>
-    <div className="mx-10 z-30 md:max-w-2xl relative md:mx-auto ">
+    <div className="mx-10 z-50 md:max-w-2xl relative md:mx-auto ">
       <div className="flex z-20  justify-between">
         {stepsLabel.map((lab, idx) => {
           return (

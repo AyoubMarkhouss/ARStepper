@@ -17,15 +17,14 @@ const Index = () => {
           "relative",
           done || car === ""
             ? map !== ""
-              ? "md:h-[150vh] md:overflow-y-clip"
-              : "overflow-y-clip overflow-hidden md:h-screen md:max-h-screen "
+              ? "md:h-[120vh] md:overflow-y-clip"
+              : "h-[180vh] overflow-y-clip overflow-hidden md:h-screen md:max-h-screen "
             : "h-screen md:overflow-y-clip"
         )}
       >
         <Stepso />
         {/* {car === "" && <Models />} */}
         {<Form />}
-       
       </div>
     </div>
   );
@@ -67,7 +66,7 @@ const Stepso = () => {
       {/* {car === "" && <Models />}  
       <Form />
       {done && <Merci />} */}
-      {done && <Merci />}
+      <div className="h-[100vh] md:h-full">{done && <Merci />}</div>
     </div>
   );
 };

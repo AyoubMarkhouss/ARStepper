@@ -18,9 +18,9 @@ const Merci = () => {
         top: mapClicked ? "10%" : "100%",
         opacity: mapClicked ? 1 : 0,
       }}
-      className="mx-10 bg-[#F4F4F4] z-40 md:mx-20 py-20 "
+      className="bg-[#F4F4F4] md:w-fit w-full z-40 md:mx-20 py-20 mt-6 md:mt-0"
     >
-      <div>
+      <div className="pl-5 md:pl-0">
         <h1 className="semi text-xl md:text-2xl">
           Merci {prénom} {nom} de l&apos;intérêt que vous portez à notre marque.
         </h1>

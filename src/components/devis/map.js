@@ -27,19 +27,19 @@ const Map = () => {
         top: done ? "-3%" : "100%",
         opacity: done ? 1 : 0,
       }}
-      className="relative bg-[#F4F4F4] w-full h-full z-50 py-3 mt-24"
+      className="relative bg-[#F4F4F4] w-full h-full -z-10 md:z-10 py-3 mt-20 md:mt-32"
     >
-      <p className="semi text-2xl pl-5 pb-5">
+      <p className="semi bg-[#F4F4F4] md:text-2xl pl-5 pb-5">
         SÉLECTIONNEZ UN DE NOS DISTRIBUTEURS
       </p>
       <iframe
         src={selectedMap === "" ? map : selectedMap}
-        className=" w-full h-[40rem]"
+        className="  w-full h-screen md:h-[40rem]"
         allowfullscreen=""
         loading="lazy"
         referrerpolicy="no-referrer-when-downgrade"
       ></iframe>
-      <div className="bg-zinc-100 left-3 absolute top-6 h-[40rem] w-[28rem] mt-10">
+      <div className="bg-[#F4F4F4] left-3 absolute top-16 md:top-6 md:h-[40rem] w-[23rem] md:w-[28rem] mt-10">
         <p className="semi text-center border-b border-black text-sm py-5">
           {address}
         </p>
@@ -51,7 +51,7 @@ const Map = () => {
                 updateAddress(bb.address);
               }}
               key={bb.sec}
-              className="hover:bg-white pl-5 w-[28rem] py-5"
+              className="hover:bg-white pl-5 md:w-[28rem] py-5"
             >
               <p className="semi ">
                 {ik + 1}-{bb.label}

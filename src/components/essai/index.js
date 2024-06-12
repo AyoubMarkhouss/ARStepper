@@ -22,7 +22,7 @@ const Index = () => {
           "relative",
           done || car === ""
             ? map !== ""
-              ? "md:h-[150vh] md:overflow-y-clip"
+              ? "md:h-[120vh] md:overflow-y-clip"
               : "overflow-y-clip overflow-hidden md:h-screen md:max-h-screen "
             : "md:h-[150vh] md:overflow-y-clip"
         )}
@@ -49,7 +49,7 @@ const Steps = () => {
   const { car } = useCarStore();
   const { done } = useInfoStore();
   return (
-    <div className="mx-10 z-30 md:max-w-2xl relative md:mx-auto ">
+    <div className="mx-10 z-50 md:max-w-2xl relative md:mx-auto ">
       <div className="flex z-20  justify-between">
         {stepsLabel.map((lab, idx) => {
           return (
@@ -62,7 +62,7 @@ const Steps = () => {
                   idx === 0 ? "bg-zinc-900" : ""
                 )}
               >
-                <p className="semi absolute left-1/2 top-1/2 text-white -translate-x-1/2 -translate-y-1/2">
+                <p className="semi  absolute left-1/2 top-1/2 text-white -translate-x-1/2 -translate-y-1/2">
                   {idx + 1}
                 </p>
               </div>
