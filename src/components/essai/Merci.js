@@ -42,7 +42,7 @@ const Merci = () => {
         </div>
         <div className="flex flex-col justify-center items-center text-center gap-5 pt-5 md:pt-0">
           <img src="/icon2.png" width={1500} height={2000} className="w-14" />
-          <p className="semi text-sm">
+          <p className="semi w-60 md:w-full text-sm">
             Vous serez contacté(e) dans les plus brefs délais afin de convenir
             d&apos;un rendez-vous
           </p>

@@ -18,8 +18,8 @@ const Index = () => {
           done || car === ""
             ? map !== ""
               ? "md:h-[120vh] md:overflow-y-clip"
-              : "h-[180vh] overflow-y-clip overflow-hidden md:h-screen md:max-h-screen "
-            : "h-screen md:overflow-y-clip"
+              : "overflow-y-clip overflow-hidden md:h-screen md:max-h-screen "
+            : "md:overflow-y-clip"
         )}
       >
         <Stepso />
