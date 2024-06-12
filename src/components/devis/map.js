@@ -39,7 +39,7 @@ const Map = () => {
         loading="lazy"
         referrerpolicy="no-referrer-when-downgrade"
       ></iframe>
-      <div className="bg-[#F4F4F4] left-3 absolute top-16 md:top-6 md:h-[40rem] w-[23rem] md:w-[28rem] mt-10">
+      <div className="bg-[#F4F4F4] left-3 absolute top-12 md:top-6 md:h-[40rem] w-[23rem] md:w-[28rem] mt-10">
         <p className="semi text-center border-b border-black text-sm py-5">
           {address}
         </p>
