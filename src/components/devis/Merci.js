@@ -54,16 +54,16 @@ const Merci = () => {
           </p>
         </div>
       </div>
-      <div className="flex justify-center items-center">
-        <button className=" bg-[#8f0c25] mt-14 flex items-center justify-center">
-          <a
-            href="https://www.alfaromeo.co.ma/"
-            className="semi h-12 text-white px-7 flex justify-center items-center"
-          >
-            ACCUEIL
-          </a>
-        </button>
-      </div>
+        {/* <div className="flex justify-center items-center">
+          <button className=" bg-[#8f0c25] mt-14 flex items-center justify-center">
+            <a
+              href="https://www.alfaromeo.co.ma/"
+              className="semi h-12 text-white px-7 flex justify-center items-center"
+            >
+              ACCUEIL
+            </a>
+          </button>
+        </div> */}
     </motion.div>
   );
 };

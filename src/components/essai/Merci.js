@@ -54,7 +54,7 @@ const Merci = () => {
           </p>
         </div>
       </div>
-      <div className="flex justify-center items-center">
+      {/* <div className="flex justify-center items-center">
         <button className=" bg-[#8f0c25] mt-14 flex items-center justify-center">
           <a
             href="https://www.alfaromeo.co.ma/"
@@ -63,7 +63,7 @@ const Merci = () => {
             ACCUEIL
           </a>
         </button>
-      </div>
+      </div> */}
     </motion.div>
   );
 };
