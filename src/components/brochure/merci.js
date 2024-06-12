@@ -19,8 +19,9 @@ const Merci = () => {
       }}
       className="z-50 w-full py-28 bg-[#F4F4F4] "
     >
+      
       <div>
-        <h1 className="semi pl-10 md:pl-20 text-xl md:text-2xl">
+        <h1 className="semi pl-5 md:pl-20 text-xl md:text-2xl">
           Merci {prénom} {nom} de l&apos;intérêt que vous portez à notre marque.
         </h1>
 
@@ -71,7 +72,7 @@ const Merci = () => {
             </a>
           </button>
         </div>
-      </div>
+        </div>
     </motion.div>
   );
 };

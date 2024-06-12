@@ -51,7 +51,7 @@ const Form = () => {
       }}
       className="grid z-40 bg-[#F4F4F4] w-full grid-cols-3 px-10 md:px-20 pb-20 pt-2"
     >
-      <div className="col-span-3 md:col-span-1">
+      <div className="col-span-3 md:col-span-1 mb-5 md:mb-0">
         <h2>Votre sélection:</h2>
         <h2 className="semi text-lg">
           {cars.filter((cr) => cr.label === car)[0]?.label}
@@ -70,7 +70,7 @@ const Form = () => {
       </div>
       <div className="col-span-3 md:col-span-2">
         <div>
-          <div className="grid grid-cols-2 gap-5 gap-x-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 gap-x-10">
             <div className="flex flex-col">
               <select
                 onChange={(e) => updateCivilité(e.target.value)}
@@ -123,7 +123,7 @@ const Form = () => {
               </p>
             </div>
 
-            <div className="flex pt-3 items-center">
+            <div className="grid md:grid-cols-3 pt-3 items-center mb-3">
               <div className="flex items-center">
                 <input
                   value=""
@@ -134,7 +134,7 @@ const Form = () => {
                 />
                 <label className="semi pl-2">J&apos;ACCEPTE</label>
               </div>
-              <div className="flex items-center pl-20">
+              <div className="flex items-center">
                 <input
                   type="radio"
                   name="A"
@@ -144,11 +144,11 @@ const Form = () => {
                 />
                 <label className="semi pl-2">JE REFUSE</label>
               </div>
-              <a className="semi max-w-96 underline text-[7px] pl-20">
+              <a className="semi max-w-96 underline text-[7px]">
                 LES ACTIVITÉS DE MARKETING
               </a>
             </div>
-            <div className="flex pt-3 items-center">
+            <div className="pt-3 items-center grid md:grid-cols-3 mb-3">
               <div className="flex items-center">
                 <input
                   value=""
@@ -159,7 +159,7 @@ const Form = () => {
                 />
                 <label className="semi pl-2">J&apos;ACCEPTE</label>
               </div>
-              <div className="flex items-center pl-20">
+              <div className="flex items-center ">
                 <input
                   type="radio"
                   name="B"
@@ -169,11 +169,11 @@ const Form = () => {
                 />
                 <label className="semi pl-2">JE REFUSE</label>
               </div>
-              <a className="semi max-w-96 underline text-[7px] pl-20">
+              <a className="semi max-w-96 underline text-[7px]">
                 LES ACTIVITÉS DE PROFILAGE
               </a>
             </div>
-            <div className="flex pt-3 items-center">
+            <div className="grid md:grid-cols-3 pt-3 items-center mb-3">
               <div className="flex items-center">
                 <input
                   value=""
@@ -184,7 +184,7 @@ const Form = () => {
                 />
                 <label className="semi pl-2">J&apos;ACCEPTE</label>
               </div>
-              <div className="flex items-center pl-20">
+              <div className="flex items-center">
                 <input
                   type="radio"
                   name="C"
@@ -194,7 +194,7 @@ const Form = () => {
                 />
                 <label className="semi pl-2">JE REFUSE</label>
               </div>
-              <a className="semi max-w-96 underline text-[7px] pl-20">
+              <a className="semi max-w-96 underline text-[7px]">
                 LA COMMUNICATION DE MES DONNÉES À DES TIERS POUR LEURS ACTIVITÉS
                 DE MARKETING
               </a>
