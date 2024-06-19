@@ -37,6 +37,35 @@ const Form = () => {
     setSec,
     setMap,
   } = useInfoStore();
+  async function onSubmit(event) {
+    event.preventDefault();
+    // Set loading to true when the request starts
+
+    try {
+      const formData = new FormData(event.currentTarget);
+      console.log("hi");
+      updateDone(true);
+      console.log(event.currentTarget);
+      await fetch(
+        // "https://script.google.com/macros/s/AKfycbwQjZ2n7D7NcoqcpK-emOsNa65pTsU0joo_oT6PYl45zgwaPnQ21lmUlN15bO24p4YPGw/exec",
+        "https://script.google.com/macros/s/AKfycbyaA5XF4HcydyK57rqbLJnWYf6Yzrxl58N1Io7krnCq-lXu8iSegfvRofuyw6bsLTck/exec",
+        {
+          method: "POST",
+          body: formData,
+          cache: "no-cache",
+        }
+      );
+
+      // Handle response if necessary
+    } catch (error) {
+      // Handle error if necessary
+      console.error(error);
+    } finally {
+      // setTimeout(() => {
+      //   router.refresh();
+      // }, 3000);
+    }
+  }
   return (
     <motion.div
       initial={{
@@ -69,10 +98,12 @@ const Form = () => {
         </button>
       </div>
       <div className="col-span-3 md:col-span-2">
-        <div>
+        <form onSubmit={(e) => onSubmit(e)}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 gap-x-10">
             <div className="flex flex-col">
               <select
+                name="Civilite"
+                id="Civilite"
                 onChange={(e) => updateCivilité(e.target.value)}
                 className="semi bg-[#F4F4F4] border border-black h-12"
               >
@@ -91,20 +122,41 @@ const Form = () => {
               </select>
             </div>
             <div></div>
-
             <input
+              type="text"
+              hidden
+              id="Model"
+              name="Model"
+              value={car}
+              defaultValue={car}
+            />
+            <input
+              type="text"
+              hidden
+              id="Mode"
+              name="Mode"
+              value="Brochure"
+              defaultValue="Brochure"
+            />
+            <input
+              name="Prenom"
+              id="Prenom"
               onChange={(e) => updatePrénom(e.target.value)}
               type="text"
               placeholder="PRÉNOM*"
               className="semi bg-[#F4F4F4] border border-black h-12 pl-2 placeholder:text-black placeholder:pl-2"
             />
             <input
+              name="Nom"
+              id="Nom"
               type="text"
               onChange={(e) => updateNom(e.target.value)}
               placeholder="NOM*"
               className="semi bg-[#F4F4F4] border border-black h-12 pl-2 placeholder:text-black placeholder:pl-2"
             />
             <input
+              name="Email"
+              id="Email"
               onChange={(e) => updateEmail(e.target.value)}
               type="email"
               placeholder="E-MAIL*"
@@ -201,13 +253,14 @@ const Form = () => {
             </div>
           </div>
           <button
-            onClick={() => updateDone(true)}
+            type="submit"
+            // onClick={() => updateDone(true)}
             className="semi h-12 text-white px-7 bg-[#ba0816] mt-14 flex items-center justify-center"
           >
             ÉTAPE SUIVANTE
             <RiArrowRightSLine size={23} />
           </button>
-        </div>
+        </form>
       </div>
     </motion.div>
   );

@@ -40,6 +40,7 @@ const Form = () => {
     setSec,
     setMap,
   } = useInfoStore();
+
   const fixedData = cityInfo.flatMap((items) => items.sections);
   const filteredPeople =
     query === ""
@@ -48,6 +49,36 @@ const Form = () => {
           return person.address.toLowerCase().includes(query.toLowerCase());
         });
   console.log(query);
+  async function onSubmit(event) {
+    event.preventDefault();
+    // Set loading to true when the request starts
+
+    try {
+      const formData = new FormData(event.currentTarget);
+      console.log("hi");
+      updateDone(true);
+      console.log(event.currentTarget);
+      await fetch(
+        // "https://script.google.com/macros/s/AKfycbwQjZ2n7D7NcoqcpK-emOsNa65pTsU0joo_oT6PYl45zgwaPnQ21lmUlN15bO24p4YPGw/exec",
+        "https://script.google.com/macros/s/AKfycbyaA5XF4HcydyK57rqbLJnWYf6Yzrxl58N1Io7krnCq-lXu8iSegfvRofuyw6bsLTck/exec",
+        {
+          method: "POST",
+          body: formData,
+          cache: "no-cache",
+        }
+      );
+
+      // Handle response if necessary
+    } catch (error) {
+      // Handle error if necessary
+      console.error(error);
+    } finally {
+      // setTimeout(() => {
+      //   router.refresh();
+      // }, 3000);
+    }
+  }
+
   return (
     // <motion.div
     //   initial={{
@@ -338,10 +369,12 @@ const Form = () => {
         </button>
       </div>
       <div className="col-span-3 md:col-span-2">
-        <form>
+        <form onSubmit={(e) => onSubmit(e)}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 gap-x-10">
             <div className="flex flex-col">
               <select
+                name="Civilite"
+                id="Civilite"
                 onChange={(e) => updateCivilité(e.target.value)}
                 className="semi bg-[#F4F4F4] border border-black h-12"
               >
@@ -362,24 +395,49 @@ const Form = () => {
             <div></div>
 
             <input
+              type="text"
+              hidden
+              id="Model"
+              name="Model"
+              value={car}
+              defaultValue={car}
+            />
+            <input
+              type="text"
+              hidden
+              id="Mode"
+              name="Mode"
+              value="Essai"
+              defaultValue="Essai"
+            />
+
+            <input
+              name="Prenom"
+              id="Prenom"
               onChange={(e) => updatePrénom(e.target.value)}
               type="text"
               placeholder="PRÉNOM*"
               className="semi bg-[#F4F4F4] border border-black h-12 pl-2 placeholder:text-black placeholder:pl-2"
             />
             <input
+              name="Nom"
+              id="Nom"
               onChange={(e) => updateNom(e.target.value)}
               type="text"
               placeholder="NOM*"
               className="semi bg-[#F4F4F4] border border-black h-12 pl-2 placeholder:text-black placeholder:pl-2"
             />
             <input
+              name="Email"
+              id="Email"
               onChange={(e) => updateEmail(e.target.value)}
               type="email"
               placeholder="E-MAIL*"
               className="semi bg-[#F4F4F4] border border-black h-12 pl-2 placeholder:text-black placeholder:pl-2"
             />
             <input
+              name="Telephone"
+              id="Telephone"
               onChange={(e) => updateTel(e.target.value)}
               type="tel"
               placeholder="TELEPHONE*"
@@ -387,6 +445,8 @@ const Form = () => {
             />
             <div className="relative w-full border">
               <input
+                name="Codepostal"
+                id="Codepostal"
                 onClick={() => setClicked(true)}
                 onChange={(e) => {
                   setQuery(e.target.value);
@@ -428,14 +488,20 @@ const Form = () => {
               )}
             </div>
             <select
+              name="Moyenne"
+              id="Moyenne"
               onChange={(e) => updateCallType(e.target.value)}
               className="semi bg-[#F4F4F4] border border-black h-12 "
             >
-              <option hidden className="pl-2">
+              <option hidden className="pl-2" value="">
                 MOYENNE DE CONTACT SOUHAITÉ
               </option>
-              <option className="semi">TÉLÉPHONE</option>
-              <option className="semi">APPÉL VIDEO</option>
+              <option className="semi" value="Telephone">
+                TÉLÉPHONE
+              </option>
+              <option className="semi" value="Appel video">
+                APPÉL VIDEO
+              </option>
             </select>
           </div>
           <div className="pt-10">
@@ -448,7 +514,7 @@ const Form = () => {
                   onClick={() => updateSiren(true)}
                   value="oui"
                   type="radio"
-                  name="siren"
+                  name="Siren"
                   className="relative float-left  h-5 w-5 appearance-none rounded-full border-2 border-solid border-secondary-500 before:pointer-events-none before:absolute before:h-4 before:w-4 before:scale-0 before:rounded-full before:bg-transparent before:opacity-0 before:shadow-checkbox before:shadow-transparent before:content-[''] after:absolute after:z-[1] after:block after:h-4 after:w-4 after:rounded-full after:content-[''] checked:border-primary checked:before:opacity-[0.16] checked:after:absolute checked:after:left-1/2 checked:after:top-1/2 checked:after:h-[0.625rem] checked:after:w-[0.625rem] checked:after:rounded-full checked:after:border-primary checked:after:bg-black checked:after:content-[''] checked:after:[transform:translate(-50%,-50%)] hover:cursor-pointer hover:before:opacity-[0.04] hover:before:shadow-black/60 focus:shadow-none focus:outline-none focus:ring-0 focus:before:scale-100 focus:before:opacity-[0.12] focus:before:shadow-black/60 focus:before:transition-[box-shadow_0.2s,transform_0.2s] checked:focus:border-primary checked:focus:before:scale-100 checked:focus:before:shadow-checkbox checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s] rtl:float-right dark:border-neutral-400 dark:checked:border-primary"
                 />
                 <label className="semi pl-2">OUI</label>
@@ -457,7 +523,7 @@ const Form = () => {
                 <input
                   onClick={() => updateSiren(false)}
                   type="radio"
-                  name="siren"
+                  name="Siren"
                   value="non"
                   className="relative float-left  h-5 w-5 appearance-none rounded-full border-2 border-solid border-secondary-500 before:pointer-events-none before:absolute before:h-4 before:w-4 before:scale-0 before:rounded-full before:bg-transparent before:opacity-0 before:shadow-checkbox before:shadow-transparent before:content-[''] after:absolute after:z-[1] after:block after:h-4 after:w-4 after:rounded-full after:content-[''] checked:border-primary checked:before:opacity-[0.16] checked:after:absolute checked:after:left-1/2 checked:after:top-1/2 checked:after:h-[0.625rem] checked:after:w-[0.625rem] checked:after:rounded-full checked:after:border-primary checked:after:bg-black checked:after:content-[''] checked:after:[transform:translate(-50%,-50%)] hover:cursor-pointer hover:before:opacity-[0.04] hover:before:shadow-black/60 focus:shadow-none focus:outline-none focus:ring-0 focus:before:scale-100 focus:before:opacity-[0.12] focus:before:shadow-black/60 focus:before:transition-[box-shadow_0.2s,transform_0.2s] checked:focus:border-primary checked:focus:before:scale-100 checked:focus:before:shadow-checkbox checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s] rtl:float-right dark:border-neutral-400 dark:checked:border-primary"
                 />
@@ -558,7 +624,8 @@ const Form = () => {
             </div>
           </div>
           <button
-            onClick={() => updateDone(true)}
+            type="submit"
+            // onClick={() => }
             className="semi h-12 text-white px-7 bg-[#ba0816] mt-14 flex items-center justify-center"
           >
             ÉTAPE SUIVANTE
