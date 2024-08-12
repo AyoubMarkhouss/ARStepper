@@ -1,7 +1,7 @@
 import React from "react";
 import { useCarStore } from "../../store/essai/car";
 
-const Models = () => {
+const  Models = () => {
   const { car, updateCar } = useCarStore();
   return (
     <div className="mx-10 md:mx-20 py-20 ">

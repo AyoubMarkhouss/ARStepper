@@ -12,7 +12,7 @@ import Merci from "./components/essai/Merci";
 function App() {
   const { updateStatus, status } = useStatusStore();
   return (
-    <div className="relative bg-[#F4F4F4] ">
+    <div className="relative bg-[#F4F4F4]">
       
       <div className="flex justify-center max-w-xl mx-auto py-10">
         

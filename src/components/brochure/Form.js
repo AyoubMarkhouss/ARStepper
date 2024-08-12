@@ -21,6 +21,8 @@ const Form = () => {
     done,
     map,
     label,
+    ville,
+    updateVille,
     updateCivilité,
     updatePrénom,
     updateNom,
@@ -37,35 +39,60 @@ const Form = () => {
     setSec,
     setMap,
   } = useInfoStore();
-  async function onSubmit(event) {
+  // async function onSubmit(event) {
+  //   event.preventDefault();
+  //   // Set loading to true when the request starts
+
+  //   try {
+  //     const formData = new FormData(event.currentTarget);
+  //     console.log("hi");
+  //     updateDone(true);
+  //     console.log(event.currentTarget);
+  //     await fetch(
+  //       // "https://script.google.com/macros/s/AKfycbwQjZ2n7D7NcoqcpK-emOsNa65pTsU0joo_oT6PYl45zgwaPnQ21lmUlN15bO24p4YPGw/exec",
+  //       "https://script.google.com/macros/s/AKfycbyaA5XF4HcydyK57rqbLJnWYf6Yzrxl58N1Io7krnCq-lXu8iSegfvRofuyw6bsLTck/exec",
+  //       {
+  //         method: "POST",
+  //         body: formData,
+  //         cache: "no-cache",
+  //       }
+  //     );
+
+  //     // Handle response if necessary
+  //   } catch (error) {
+  //     // Handle error if necessary
+  //     console.error(error);
+  //   } finally {
+  //     // setTimeout(() => {
+  //     //   router.refresh();
+  //     // }, 3000);
+  //   }
+  // }
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // Set loading to true when the request starts
+    const form = event.target;
+
+    // Create a FormData object from the form
+    const formData = new FormData(form);
 
     try {
-      const formData = new FormData(event.currentTarget);
-      console.log("hi");
-      updateDone(true);
-      console.log(event.currentTarget);
-      await fetch(
-        // "https://script.google.com/macros/s/AKfycbwQjZ2n7D7NcoqcpK-emOsNa65pTsU0joo_oT6PYl45zgwaPnQ21lmUlN15bO24p4YPGw/exec",
-        "https://script.google.com/macros/s/AKfycbyaA5XF4HcydyK57rqbLJnWYf6Yzrxl58N1Io7krnCq-lXu8iSegfvRofuyw6bsLTck/exec",
-        {
-          method: "POST",
-          body: formData,
-          cache: "no-cache",
-        }
-      );
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: formData,
+        mode: "no-cors",
+      });
 
-      // Handle response if necessary
+      if (response.ok || response.type === "opaque") {
+        // alert("Form submitted successfully!");
+        updateDone(true);
+      } else {
+        alert("Form submission failed.");
+      }
     } catch (error) {
-      // Handle error if necessary
-      console.error(error);
-    } finally {
-      // setTimeout(() => {
-      //   router.refresh();
-      // }, 3000);
+      console.error("Error submitting form:", error);
+      alert("Form submission failed.");
     }
-  }
+  };
   return (
     <motion.div
       initial={{
@@ -98,30 +125,49 @@ const Form = () => {
         </button>
       </div>
       <div className="col-span-3 md:col-span-2">
-        <form onSubmit={(e) => onSubmit(e)}>
+        <form
+          onSubmit={handleSubmit}
+          action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&amp;orgId=00D8d000009q2y7"
+          method="POST"
+        >
+          <input type="hidden" name="oid" value="00D8d000009q2y7" />
+          <input
+            type="hidden"
+            name="recordType"
+            id="recordType"
+            value="0128d000000DtwF"
+          />
+          <input
+            type="hidden"
+            id="00N8d00000UVYP7"
+            name="00N8d00000UVYP7"
+            value="1"
+          />
+          <input
+            type="hidden"
+            id="00N8d00000UVYOu"
+            name="00N8d00000UVYOu"
+            value="83"
+          />
+          <input
+            type="hidden"
+            id="00N8d00000UVYPn"
+            name="00N8d00000UVYPn"
+            value="83-620"
+          />
+          <input
+            type="hidden"
+            id="00N8d00000UVYP5"
+            name="00N8d00000UVYP5"
+            value="Demande de Test Drive"
+          />
+          <input
+            id="lead_source"
+            name="lead_source"
+            type="hidden"
+            value="event_website"
+          />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 gap-x-10">
-            <div className="flex flex-col">
-              <select
-                name="Civilite"
-                id="Civilite"
-                onChange={(e) => updateCivilité(e.target.value)}
-                className="semi bg-[#F4F4F4] border border-black h-12"
-              >
-                <option className="semi pl-2" value="" hidden>
-                  Civilité*
-                </option>
-                <option className="semi" value="Mr.">
-                  M.
-                </option>
-                <option className="semi" value="MME.">
-                  MME.
-                </option>
-                <option className="semi" value="MLLE.">
-                  MLLE.
-                </option>
-              </select>
-            </div>
-            <div></div>
             <input
               type="text"
               hidden
@@ -139,24 +185,53 @@ const Form = () => {
               defaultValue="Brochure"
             />
             <input
-              name="Prenom"
-              id="Prenom"
+              name="first_name"
+              id="first_name"
               onChange={(e) => updatePrénom(e.target.value)}
               type="text"
               placeholder="PRÉNOM*"
               className="semi bg-[#F4F4F4] border border-black h-12 pl-2 placeholder:text-black placeholder:pl-2"
             />
             <input
-              name="Nom"
-              id="Nom"
+              name="last_name"
+              id="last_name"
               type="text"
               onChange={(e) => updateNom(e.target.value)}
               placeholder="NOM*"
               className="semi bg-[#F4F4F4] border border-black h-12 pl-2 placeholder:text-black placeholder:pl-2"
             />
+            <div className="flex flex-col">
+              <select
+                name="salutation"
+                id="salutation"
+                onChange={(e) => updateCivilité(e.target.value)}
+                className="semi bg-[#F4F4F4] border border-black h-12"
+              >
+                <option className="semi pl-2" value="" hidden>
+                  Civilité*
+                </option>
+                <option className="semi" value="Mr.">
+                  M.
+                </option>
+                <option className="semi" value="MME.">
+                  MME.
+                </option>
+                <option className="semi" value="MLLE.">
+                  MLLE.
+                </option>
+              </select>
+            </div>
             <input
-              name="Email"
-              id="Email"
+              name="ville"
+              id="ville"
+              onChange={(e) => updateVille(e.target.value)}
+              type="text"
+              placeholder="VILLE*"
+              className="semi bg-[#F4F4F4] border border-black h-12 pl-2 placeholder:text-black placeholder:pl-2"
+            />
+            <input
+              name="email"
+              id="email"
               onChange={(e) => updateEmail(e.target.value)}
               type="email"
               placeholder="E-MAIL*"
@@ -196,11 +271,11 @@ const Form = () => {
                 />
                 <label className="semi pl-2">JE REFUSE</label>
               </div>
-              <a className="semi max-w-96 underline text-[7px]">
-                LES ACTIVITÉS DE MARKETING
+              <a className="semi max-w-96 underline text-[7px] uppercase">
+                les conditions générales et la politique de confidentialité
               </a>
             </div>
-            <div className="pt-3 items-center grid md:grid-cols-3 mb-3">
+            {/* <div className="pt-3 items-center grid md:grid-cols-3 mb-3">
               <div className="flex items-center">
                 <input
                   value=""
@@ -250,10 +325,11 @@ const Form = () => {
                 LA COMMUNICATION DE MES DONNÉES À DES TIERS POUR LEURS ACTIVITÉS
                 DE MARKETING
               </a>
-            </div>
+            </div> */}
           </div>
           <button
             type="submit"
+            name="submit"
             // onClick={() => updateDone(true)}
             className="semi h-12 text-white px-7 bg-[#ba0816] mt-14 flex items-center justify-center"
           >

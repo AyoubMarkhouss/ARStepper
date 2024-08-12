@@ -19,7 +19,7 @@ const Index = () => {
     <div className="relative bg-[#F4F4F4]">
       <div
         className={cn(
-          "relative",
+          "relative ",
           done || car === ""
             ? map !== ""
               ? "md:h-[120vh] md:overflow-y-clip"
@@ -49,7 +49,7 @@ const Steps = () => {
   const { car } = useCarStore();
   const { done } = useInfoStore();
   return (
-    <div className="mx-10 z-50 md:max-w-2xl relative md:mx-auto ">
+    <div className="mx-10 z-50 md:max-w-2xl relative md:mx-auto">
       <div className="flex z-20  justify-between">
         {stepsLabel.map((lab, idx) => {
           return (

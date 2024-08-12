@@ -9,6 +9,7 @@ export const useInfoStore = create((set) => ({
   address: "",
   callType: "",
   label: "",
+  ville: "",
   siren: null,
   marketing: null,
   profilage: null,
@@ -28,6 +29,7 @@ export const useInfoStore = create((set) => ({
   updateLabel: (label) => set(() => ({ label: label })),
   updateProfilage: (profilage) => set(() => ({ profilage: profilage })),
   updateDone: (done) => set(() => ({ done: done })),
+  updateVille: (ville) => set(() => ({ ville: ville })),
   updateCommunication: (communication) =>
     set(() => ({ communication: communication })),
   setSec: (sec) => set(() => ({ sec: sec })),
