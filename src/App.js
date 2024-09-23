@@ -51,5 +51,5 @@ export default App;
 const statusInfo = [
   { label: "Essai", comp: Essai },
   { label: "Devis", comp: Devis },
-  { label: "Brochure", comp: Brochure },
+  // { label: "Brochure", comp: Brochure },
 ];

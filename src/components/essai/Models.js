@@ -49,6 +49,6 @@ const cars = [
   { image: "/Giulia.png", label: "Giulia" },
   { image: "/Stelvio.png", label: "Stelvio" },
   { image: "/Tonale.png", label: "Tonale" },
-  { image: "/Stelvio-Q.png", label: "Stelvio Quadrifoglio" },
-  { image: "/Giulia-Q.png", label: "Giulia Quadrifoglio" },
+  { image: "/stelvioqd.png", label: "Stelvio Quadrifoglio" },
+  { image: "/giuliaqd.png", label: "Giulia Quadrifoglio" },
 ];

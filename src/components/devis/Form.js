@@ -192,7 +192,7 @@ const Form = () => {
                 name="Civilite"
                 id="Civilite"
                 onChange={(e) => updateCivilité(e.target.value)}
-                className="semi bg-[#F4F4F4] border border-black h-12"
+                className="semi bg-[#F4F4F4] border border-black h-12 pl-3"
               >
                 <option className="semi pl-2" value="" hidden>
                   CIVILITÉ*
@@ -280,10 +280,10 @@ const Form = () => {
               name="Moyenne"
               id="Moyenne"
               onChange={(e) => updateCallType(e.target.value)}
-              className="semi bg-[#F4F4F4] border border-black h-12 "
+              className="semi bg-[#F4F4F4] border border-black h-12 pl-3"
             >
               <option hidden className="pl-2" value="">
-                MOYENNE DE CONTACT SOUHAITÉ
+                MOYEN DE CONTACT SOUHAITÉ
               </option>
               <option className="semi" value="Telephone">
                 TÉLÉPHONE
@@ -298,26 +298,26 @@ const Form = () => {
             <label className="semi text-sm">
               ÊTES-VOUS PARTICULIER OU PROFESSIONNEL ?
             </label>
-            <div className="flex pt-3">
+            <div className="flex flex-col md:flex-row pt-3">
               <div className="flex items-center">
                 <input
                   onClick={() => updateSiren(true)}
-                  value="oui"
+                  value="particulier"
                   type="radio"
                   name="Siren"
                   className="relative float-left  h-5 w-5 appearance-none rounded-full border-2 border-solid border-secondary-500 before:pointer-events-none before:absolute before:h-4 before:w-4 before:scale-0 before:rounded-full before:bg-transparent before:opacity-0 before:shadow-checkbox before:shadow-transparent before:content-[''] after:absolute after:z-[1] after:block after:h-4 after:w-4 after:rounded-full after:content-[''] checked:border-primary checked:before:opacity-[0.16] checked:after:absolute checked:after:left-1/2 checked:after:top-1/2 checked:after:h-[0.625rem] checked:after:w-[0.625rem] checked:after:rounded-full checked:after:border-primary checked:after:bg-black checked:after:content-[''] checked:after:[transform:translate(-50%,-50%)] hover:cursor-pointer hover:before:opacity-[0.04] hover:before:shadow-black/60 focus:shadow-none focus:outline-none focus:ring-0 focus:before:scale-100 focus:before:opacity-[0.12] focus:before:shadow-black/60 focus:before:transition-[box-shadow_0.2s,transform_0.2s] checked:focus:border-primary checked:focus:before:scale-100 checked:focus:before:shadow-checkbox checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s] rtl:float-right dark:border-neutral-400 dark:checked:border-primary"
                 />
-                <label className="semi pl-2">OUI</label>
+                <label className="semi pl-2">PARTICULIER</label>
               </div>
-              <div className="flex items-center pl-20">
+              <div className="flex items-center md:pl-20">
                 <input
                   onClick={() => updateSiren(false)}
                   type="radio"
                   name="Siren"
-                  value="non"
+                  value="PROFESSIONNEL"
                   className="relative float-left  h-5 w-5 appearance-none rounded-full border-2 border-solid border-secondary-500 before:pointer-events-none before:absolute before:h-4 before:w-4 before:scale-0 before:rounded-full before:bg-transparent before:opacity-0 before:shadow-checkbox before:shadow-transparent before:content-[''] after:absolute after:z-[1] after:block after:h-4 after:w-4 after:rounded-full after:content-[''] checked:border-primary checked:before:opacity-[0.16] checked:after:absolute checked:after:left-1/2 checked:after:top-1/2 checked:after:h-[0.625rem] checked:after:w-[0.625rem] checked:after:rounded-full checked:after:border-primary checked:after:bg-black checked:after:content-[''] checked:after:[transform:translate(-50%,-50%)] hover:cursor-pointer hover:before:opacity-[0.04] hover:before:shadow-black/60 focus:shadow-none focus:outline-none focus:ring-0 focus:before:scale-100 focus:before:opacity-[0.12] focus:before:shadow-black/60 focus:before:transition-[box-shadow_0.2s,transform_0.2s] checked:focus:border-primary checked:focus:before:scale-100 checked:focus:before:shadow-checkbox checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s] rtl:float-right dark:border-neutral-400 dark:checked:border-primary"
                 />
-                <label className="semi pl-2">NON</label>
+                <label className="semi pl-2">PROFESSIONNEL</label>
               </div>
             </div>
             <p className="italic text-sm pt-10">
@@ -430,9 +430,9 @@ const Form = () => {
 export default Form;
 
 const cars = [
-  { image: "/Giulia.png", label: "Giulia" },
-  { image: "/Stelvio.png", label: "Stelvio" },
-  { image: "/Tonale.png", label: "Tonale" },
-  { image: "/Stelvio-Q.png", label: "Stelvio Quadrifoglio" },
-  { image: "/Giulia-Q.png", label: "Giulia Quadrifoglio" },
+  { image: "/giulia.png", label: "Giulia" },
+  { image: "/stelvio.png", label: "Stelvio" },
+  { image: "/tonale.png", label: "Tonale" },
+  { image: "/stelvioqd.png", label: "Stelvio Quadrifoglio" },
+  { image: "/giuliaqd.png", label: "Giulia Quadrifoglio" },
 ];
